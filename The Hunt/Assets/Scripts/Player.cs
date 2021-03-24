@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,62 +6,85 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Player : MonoBehaviour
+public class Player : PlayableCharacter
 {
-    public float speed = 5f;
-    public Rigidbody2D rb;
-    private Vector2 movement;
-    public Animator animator;
     public UnityEngine.UI.Image healthbar;
-    public int health = 2;
-    // Start is called before the first frame update
-    void Start()
-    {
+    public int health;
+    private const int TotalHealth = 3;
 
+    [SerializeField] private int damageTaken = 1;
+
+    protected override void Start()
+    {
+        base.Start();
+        speedDifferentiator = GetPercentage((int)speed, TotalHealth);
+        health = TotalHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    private float GetPercentage(int over, int under)
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
-
-        
-
+        var percentage = over / (float)under;
+        percentage = (float)Math.Round(percentage, 2);
+        return percentage;
     }
-    private void FixedUpdate()
+
+    /// <summary>
+    /// If the changer is positive
+    /// </summary>
+    /// <param name="changer"></param>
+    private void AlterateHealth(int changer = 1)
     {
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        health += changer * damageTaken;
+        if (health <= 0)
+            speed = 0;
+        else
+            speed += changer * speedDifferentiator;
+
+        healthbar.fillAmount = GetPercentage(health, TotalHealth);
     }
-    public void TakeHit()
+
+    /// <summary>
+    /// Manipulates the players health
+    /// </summary>
+    /// <param name="typeInteraction">
+    /// <list type="bullet">
+    /// <item>
+    /// <term>
+    /// 1
+    /// </term>
+    /// <description>
+    /// Attacks the player
+    /// </description>
+    /// </item>
+    /// <item>
+    /// <term>
+    /// 2
+    /// </term>
+    /// <description>
+    /// Heals the player
+    /// </description>
+    /// </item>
+    /// </list>
+    /// </param>
+    public void ManipulateHealth(int typeInteraction)
     {
-        
-        if (health >= 1)
+        switch (typeInteraction)
         {
-            health -= 1;
-            speed -= 2.5f;
-            healthbar.fillAmount -= 0.5f;
-        }
+            case -1:
+                if (health < 1) break;
+                AlterateHealth(-1);
+                break;
 
-    }
-    private void Heal()
-    {
-        if (health == 1)
-        {
-            health += 1;
-            speed += 2.5f;
-            healthbar.fillAmount += 0.5f;
+            case 1:
+                if (health == 0 || health == TotalHealth) break;
+                AlterateHealth();
+                break;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    public override bool HasHealth()
     {
-        if (collision.tag == "Heal")
-        {
-            Heal();
-        }
+        return true;
     }
+
 }
