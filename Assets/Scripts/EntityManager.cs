@@ -6,42 +6,25 @@ using UnityEngine;
 public class EntityManager : MonoBehaviour
 {
     protected int health;
-
-    [SerializeField] protected Animator animator;
-
+    public UnityEngine.UI.Image healthBar;
+    private const int TotalHealth = 3;
+    private PlayerMovement MovementController;
+    private PlayerAbility AbilityController;
 
     protected virtual void Start()
     {
-        // Initialize the values. Can be overriden
-        health = 3;
-
+        health = TotalHealth;
+        MovementController = GetComponent<PlayerMovement>();
+        AbilityController = GetComponent<PlayerAbility>();
     }
 
-    // Update is called once per frame
-    protected virtual void Update()
+    private void AlterHealth(int changer = 1, int modifier = 1)
     {
-        // Get the movement
-
-    }
-
-    protected void FixedUpdate()
-    {
-    }
-
-
-
-    protected virtual void Interact()
-    {
-        return;
-    }
-
-    protected virtual void Attack()
-    {
-        return;
-    }
-
-    protected virtual void SecondAttack()
-    {
-        return;
+        health += changer * modifier;
+        if (health <= 0)
+            MovementController.Kill();
+        else
+            MovementController.SetSpeed(-1);
+        healthBar.fillAmount = _HelperFunctions.GetPercentage(health, TotalHealth);
     }
 }

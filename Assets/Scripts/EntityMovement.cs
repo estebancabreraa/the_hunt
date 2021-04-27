@@ -6,9 +6,9 @@ using UnityEngine;
 public class EntityMovement : MonoBehaviour
 {
     protected Vector2 movement;
-    [SerializeField] protected Rigidbody2D rb;
+    protected Rigidbody2D rb;
     [SerializeField] protected float normalSpeed = 5f;
-    [SerializeField] protected float speed;
+    protected float speed;
     [SerializeField] protected float speedDiffentiator;
     [SerializeField] protected Animator animator;
     [SerializeField] protected int TimeDisabledSpeed;
@@ -45,7 +45,7 @@ public class EntityMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement * calculatedSpeed);
     }
 
-    protected virtual void SetSpeed(float factor, bool reset = false)
+    public virtual void SetSpeed(float factor, bool reset = false)
     {
         const double tolerance = .001f;
         if (Math.Abs(factor - (-1f)) < tolerance)
@@ -61,6 +61,12 @@ public class EntityMovement : MonoBehaviour
         }
 
         SpeedChanger = StartCoroutine(AffectSpeedForTime());
+    }
+
+
+    public virtual void Kill()
+    {
+        speed = 0;
     }
 
     protected virtual IEnumerator AffectSpeedForTime()

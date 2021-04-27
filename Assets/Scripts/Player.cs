@@ -17,16 +17,10 @@ public class Player : PlayableCharacter
     protected override void Start()
     {
         base.Start();
-        speedDifferentiator = GetPercentage((int)speed, TotalHealth);
+        speedDifferentiator = _HelperFunctions.GetPercentage((int) speed, TotalHealth);
         health = TotalHealth;
     }
 
-    private float GetPercentage(int over, int under)
-    {
-        var percentage = over / (float)under;
-        percentage = (float)Math.Round(percentage, 2);
-        return percentage;
-    }
 
     /// <summary>
     /// If the changer is positive
@@ -40,7 +34,7 @@ public class Player : PlayableCharacter
         else
             speed += changer * speedDifferentiator;
 
-        healthbar.fillAmount = GetPercentage(health, TotalHealth);
+        healthbar.fillAmount = _HelperFunctions.GetPercentage(health, TotalHealth);
     }
 
     /// <summary>
@@ -86,5 +80,4 @@ public class Player : PlayableCharacter
     {
         return true;
     }
-
 }
