@@ -1261,6 +1261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c9a059a918b1746984ecab95de2a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 2038543850}
 --- !u!114 &2048753550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1273,9 +1274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df22071d636b1e43b1db88c2e7e37fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   normalSpeed: 5
-  speed: 5
   speedDiffentiator: 0.5
   animator: {fileID: 0}
   TimeDisabledSpeed: 0

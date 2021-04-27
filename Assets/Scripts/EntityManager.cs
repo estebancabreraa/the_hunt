@@ -18,7 +18,7 @@ public class EntityManager : MonoBehaviour
         AbilityController = GetComponent<PlayerAbility>();
     }
 
-    private void AlterHealth(int changer = 1, int modifier = 1)
+    protected virtual void AlterHealth(int changer = 1, int modifier = 1)
     {
         health += changer * modifier;
         if (health <= 0)
@@ -27,4 +27,6 @@ public class EntityManager : MonoBehaviour
             MovementController.SetSpeed(-1);
         healthBar.fillAmount = _HelperFunctions.GetPercentage(health, TotalHealth);
     }
+    
+    
 }
