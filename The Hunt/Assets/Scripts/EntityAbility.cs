@@ -7,7 +7,7 @@ public class EntityAbility : MonoBehaviour
 {
     protected int[] abilityCooldowns = { 15, 10 };
     protected bool[] abilityAvailable = {true, true};
-    [SerializeField] Image qCD;
+    [SerializeField] protected Image qCD;
     protected float currentQ;
 
     protected virtual void Start()
