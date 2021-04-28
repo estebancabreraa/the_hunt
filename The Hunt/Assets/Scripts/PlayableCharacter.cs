@@ -73,38 +73,9 @@ public class PlayableCharacter : MonoBehaviour
         return false;
     }
 
-    protected virtual void Update()
-    {
-        Movement.x = Input.GetAxisRaw("Horizontal");
-        Movement.y = Input.GetAxisRaw("Vertical");
-
-        animator.SetFloat("Horizontal", Movement.x);
-        animator.SetFloat("Vertical", Movement.y);
-        animator.SetFloat("Speed", Movement.sqrMagnitude);
-    }
-
-    protected virtual void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + Movement * speed * Time.fixedDeltaTime);
-    }
-
-    protected virtual void Move()
-    {
-        return;
-    }
-
     protected virtual void Interact()
     {
         return;
     }
 
-    protected virtual void Attack()
-    {
-        return;
-    }
-
-    protected virtual void SecondAttack()
-    {
-        return;
-    }
 }
