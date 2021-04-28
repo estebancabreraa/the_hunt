@@ -11,7 +11,10 @@ public class Jay : EntityAbility
 
     protected override void UseFirstAbility()
     {
-        base.UseFirstAbility();
+        //base.UseFirstAbility();
+        if (!abilityAvailable[0]) return;
+        abilityAvailable[0] = false;
+        StartCoroutine(ResetAbility(1));
         if (maxSpawns == 0) return;
         newHeal = Instantiate(pickup);
         newHeal.gameObject.transform.localPosition = destination.position;
