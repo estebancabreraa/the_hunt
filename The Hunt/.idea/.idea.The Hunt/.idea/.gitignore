@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/projectSettingsUpdater.xml
+/modules.xml
+/.idea.The Hunt.iml
+# Datasource local storage ignored files
+/../../../../../../../../../../../../:\Users\andyq\Documents\Universidad del Valle\2021 - 1\Desarrollo Ágil de Negocios\the_hunt\The Hunt\.idea\.idea.The Hunt\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
