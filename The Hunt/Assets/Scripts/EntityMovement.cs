@@ -7,8 +7,8 @@ public class EntityMovement : MonoBehaviour
 {
     protected Vector2 movement;
     protected Rigidbody2D rb;
-    [SerializeField] protected float normalSpeed = 5f;
-    [SerializeField] protected float speed;
+    [SerializeField] public float normalSpeed = 5f;
+    [SerializeField] public float speed;
     [SerializeField] protected float speedDiffentiator;
     [SerializeField] protected Animator animator;
     [SerializeField] protected int TimeDisabledSpeed;
