@@ -2,17 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Keff : MonoBehaviour
+public class Keff : EntityAbility
 {
-    // Start is called before the first frame update
-    void Start()
+    protected GameObject[] traps;
+
+    protected override void UseFirstAbility()
     {
-        
+        if (!abilityAvailable[0]) return;
+        abilityAvailable[0] = false;
+        StartCoroutine(ResetAbility(1));
+        currentQ = 0;
+
+        AffectTraps(true);
+        StartCoroutine(Deactivate());
+    }
+    protected IEnumerator Deactivate()
+    {
+        yield return new WaitForSecondsRealtime(7);
+        AffectTraps(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void AffectTraps(bool disable)
     {
-        
+        traps = GameObject.FindGameObjectsWithTag("Trap");
+        foreach (GameObject trap in traps)
+        {
+            Trap tr = trap.GetComponent<Trap>();
+            if (disable)
+                tr.DisableTrap();
+            else
+                tr.EnableTrap();
+
+        }
     }
 }
