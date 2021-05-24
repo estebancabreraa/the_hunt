@@ -31,18 +31,20 @@ public class Wanderer : EntityAbility
         amount.text = maxTraps.ToString();
         if (maxTraps == 0)
         {
-            currentQ = 0;
+            //currentQ.Value = 0;
+            UpdateCDServerRpc(0);
             abilityAvailable[0] = false;
         }
 
     }
     protected override IEnumerator ResetAbility(int ability)
     {
-        yield return new WaitForSecondsRealtime(abilityCooldowns[ability - 1]);
+        yield return new WaitForSecondsRealtime(abilityCooldowns.Value);
         abilityAvailable[ability - 1] = true;
         maxTraps += 1;
         amount.text = maxTraps.ToString();
-        currentQ = abilityCooldowns[0];
+        //currentQ.Value = abilityCooldowns.Value;
+        UpdateCDServerRpc(abilityCooldowns.Value);
         qCD.fillAmount = 1;
 
     }

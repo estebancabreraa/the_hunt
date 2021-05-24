@@ -1,12 +1,15 @@
+using MLAPI;
+using MLAPI.Messaging;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trap : MonoBehaviour
+public class Trap : NetworkBehaviour
 {
 
     private bool disabled;
     private SpriteRenderer srenderer;
+    private PlayerManager trappedPlayer;
 
     private void Start()
     {
@@ -14,16 +17,24 @@ public class Trap : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var crewm = collision.gameObject.GetComponent<PlayerManager>();
+        PlayerManager crewm = collision.gameObject.GetComponent<PlayerManager>();
         if (crewm != null && collision.tag == "Player")
         {
-            if (!disabled)
-                crewm.AlterHealth(1, -1);
-            Destroy(gameObject);
+            trappedPlayer = crewm;
+            GotPlayerServerRpc();
+            
         }
 
     }
 
+    [ServerRpc]
+    public void GotPlayerServerRpc()
+    {
+
+        if (!disabled)
+            trappedPlayer.AlterHealth(1, -1);
+        Destroy(gameObject);
+    }
     public void DisableTrap()
     {
         srenderer.enabled = true;

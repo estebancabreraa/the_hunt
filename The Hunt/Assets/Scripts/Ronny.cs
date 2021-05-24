@@ -11,7 +11,7 @@ public class Ronny : EntityAbility
         if (!abilityAvailable[0]) return;
         abilityAvailable[0] = false;
         StartCoroutine(ResetAbility(1));
-        currentQ = 0;
+        currentQ.Value = 0;
 
         AffectSpeed(true);
         StartCoroutine(Deactivate());
@@ -30,11 +30,11 @@ public class Ronny : EntityAbility
             PlayerMovement pl = player.GetComponent<PlayerMovement>();
             if (faster)
             {
-                pl.speed *= 1.7f;
+                pl.speed.Value *= 1.7f;
                 pl.normalSpeed *= 1.7f;
             }
             else { 
-                pl.speed /= 1.7f;
+                pl.speed.Value /= 1.7f;
                 pl.normalSpeed /= 1.7f;
             }
 

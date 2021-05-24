@@ -1,36 +1,57 @@
+using MLAPI;
+using MLAPI.Messaging;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Villain : PlayableCharacter
+public class Villain : NetworkBehaviour
 {
+    protected Vector2 Movement;
+
+    [SerializeField] protected float speed = 5f;
+    [SerializeField] protected float speedDifferentiator = 2.5f;
     private List<PlayerManager> playerList;
     private PlayerManager current;
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
         playerList = new List<PlayerManager>();
     }
 
     protected virtual void Update()
     {
         //base.Update();
+        if (!IsLocalPlayer) return;
         if (!Input.GetKeyDown(KeyCode.K)) return;
         SelectPlayer();
-        if (current is null) return;
-        current.AlterHealth(1, -1);
+        print(current.name);
+        HitPlayerServerRpc(current.name);
+        print("end");
+
+    }
+
+    [ServerRpc]
+    public void HitPlayerServerRpc(string name)
+    {
+        var player = GameObject.Find(name).GetComponent<PlayerManager>();
+        if (player is null) return;
+        player.AlterHealth(1, -1);
+        print(player.name);
+
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var crewm = collision.gameObject.GetComponent<PlayerManager>();
-        if (crewm != null)
+        if (crewm != null && IsOwner)
+        {
             playerList.Add(crewm);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         var crewm = collision.gameObject.GetComponent<PlayerManager>();
-        if (crewm != null)
+        if (crewm != null && IsOwner)
         {
             //Quitar selected
             playerList.Remove(crewm);

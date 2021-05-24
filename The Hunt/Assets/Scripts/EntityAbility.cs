@@ -3,19 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MLAPI;
+using MLAPI.NetworkVariable;
+using MLAPI.Messaging;
+using System.Xml.Schema;
 
-public class EntityAbility : MonoBehaviour
+public class EntityAbility : NetworkBehaviour
 {
-    protected int[] abilityCooldowns = {15, 10};
-    protected bool[] abilityAvailable = {true, true};
+    [SerializeField] protected NetworkVariableFloat abilityCooldowns = new NetworkVariableFloat(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.OwnerOnly }, 15f);
+    [SerializeField] protected bool[] abilityAvailable = {true, true};
     [SerializeField] protected Image qCD;
-    protected float currentQ;
+    //protected float currentQ;
+    const float tolerance = 0.01f;
+    [SerializeField] protected NetworkVariableFloat currentQ = new NetworkVariableFloat(20f);
+
 
     protected virtual void Start()
     {
-        currentQ = abilityCooldowns[0];
+        currentQ.Value = abilityCooldowns.Value;
     }
 
+    private void OnEnable()
+    {
+        currentQ.OnValueChanged += UpdateFill;
+    }
+    private void OnDisable()
+    {
+        currentQ.OnValueChanged -= UpdateFill;
+
+    }
     // Hey, if it works, it works. 
     // Nevertheless, we need to make this abstract. 
     // Update uses a lot of processing power.
@@ -23,15 +39,16 @@ public class EntityAbility : MonoBehaviour
     // Availability of the ability
     protected virtual void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (IsOwner)
         {
-            UseFirstAbility();
+            if (Input.GetKeyDown(KeyCode.Q))
+                UseFirstAbility();
+            if (Math.Abs(currentQ.Value - abilityCooldowns.Value) > tolerance && !abilityAvailable[0])
+                UpdateCDServerRpc(currentQ.Value + Time.deltaTime);
+            //qCD.fillAmount = _HelperFunctions.GetPercentage((int)currentQ.Value, abilityCooldowns.Value);
         }
-
-        const float tolerance = 0.01f;
-        if (Math.Abs(currentQ - abilityCooldowns[0]) > tolerance && !abilityAvailable[0])
-            currentQ += Time.deltaTime;
-        qCD.fillAmount = _HelperFunctions.GetPercentage((int) currentQ, abilityCooldowns[0]);
+        
+            
     }
 
     protected virtual void UseFirstAbility()
@@ -52,8 +69,20 @@ public class EntityAbility : MonoBehaviour
 
     protected virtual IEnumerator ResetAbility(int ability)
     {
-        yield return new WaitForSecondsRealtime(abilityCooldowns[ability - 1]);
+        yield return new WaitForSecondsRealtime(abilityCooldowns.Value);
         abilityAvailable[ability - 1] = true;
-        currentQ = abilityCooldowns[0];
+        //currentQ.Value = abilityCooldowns.Value;
+        if (IsOwner)
+            UpdateCDServerRpc(abilityCooldowns.Value);
+    }
+
+    [ServerRpc]
+    protected void UpdateCDServerRpc(float value)
+    {
+        currentQ.Value = value;
+    }
+    protected void UpdateFill(float oldValue, float newValue)
+    {
+        qCD.fillAmount = newValue/abilityCooldowns.Value;
     }
 }

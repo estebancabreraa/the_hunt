@@ -11,7 +11,7 @@ public class Keff : EntityAbility
         if (!abilityAvailable[0]) return;
         abilityAvailable[0] = false;
         StartCoroutine(ResetAbility(1));
-        currentQ = 0;
+        currentQ.Value = 0;
 
         AffectTraps(true);
         StartCoroutine(Deactivate());

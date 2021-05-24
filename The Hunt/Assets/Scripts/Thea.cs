@@ -2,26 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MLAPI.Messaging;
+using MLAPI.NetworkVariable;
 
 public class Thea : EntityAbility
 {
 
     [SerializeField] protected Transform arrow;
-    [SerializeField] protected Transform villain;
+    protected Transform villain;
     [SerializeField] protected float minDistance;
-    protected bool active;
+    protected NetworkVariableBool active = new NetworkVariableBool(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.OwnerOnly }, false);
+
 
     protected override void Start()
     {
-        abilityCooldowns[0] = 20;
+        abilityCooldowns.Value = 20;
         base.Start();
-
+        villain = GameObject.FindGameObjectWithTag("Villain").transform;
     }
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-        if (!active) return;
+        if (!active.Value)
+        {
+            arrow.gameObject.SetActive(false);
+
+            return;
+        }
         var dir = villain.position - arrow.position;
         if (dir.magnitude < minDistance)
             arrow.gameObject.SetActive(false);
@@ -37,9 +45,9 @@ public class Thea : EntityAbility
     {
         //base.UseFirstAbility();
         if (!abilityAvailable[0]) return;
-        currentQ = 0;
+        currentQ.Value = 0;
         abilityAvailable[0] = false;
-        active = true;
+        active.Value = true;
         StartCoroutine(Deactivate());
         StartCoroutine(ResetAbility(1));
 
@@ -48,7 +56,7 @@ public class Thea : EntityAbility
     protected IEnumerator Deactivate()
     {
         yield return new WaitForSecondsRealtime(7);
-        arrow.gameObject.SetActive(false);
-        active = false;
+        active.Value = false;
     }
+
 }

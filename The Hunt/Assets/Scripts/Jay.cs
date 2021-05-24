@@ -26,16 +26,16 @@ public class Jay : EntityAbility
         if (maxSpawns == 0)
         {
             abilityAvailable[0] = false;
-            currentQ = 0;
+            currentQ.Value = 0;
         }
     }
     protected override IEnumerator ResetAbility(int ability)
     {
-        yield return new WaitForSecondsRealtime(abilityCooldowns[ability - 1]);
+        yield return new WaitForSecondsRealtime(abilityCooldowns.Value);
         abilityAvailable[ability - 1] = true;
         maxSpawns += 1;
         amount.text = maxSpawns.ToString();
-        currentQ = abilityCooldowns[0];
+        currentQ.Value = abilityCooldowns.Value;
         qCD.fillAmount = 1;
 
     }
