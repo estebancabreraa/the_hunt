@@ -1,3 +1,5 @@
+using MLAPI;
+using MLAPI.Messaging;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,21 +8,19 @@ using UnityEngine.UI;
 public class Jay : EntityAbility
 {
     [SerializeField] protected int maxSpawns = 2;
-    [SerializeField] protected Heal pickup;
+    [SerializeField] protected NetworkObject pickup;
     [SerializeField] protected Transform destination;
     [SerializeField] protected Text amount;
 
-    protected Heal newHeal;
+    //protected Heal newHeal;
 
     protected override void UseFirstAbility()
     {
         //base.UseFirstAbility();
         if (!abilityAvailable[0]) return;
         StartCoroutine(ResetAbility(1));
-
+        SpawnHealServerRpc();
         if (maxSpawns == 0) return;
-        newHeal = Instantiate(pickup);
-        newHeal.gameObject.transform.localPosition = destination.position;
         maxSpawns -= 1;
         amount.text = maxSpawns.ToString();
         if (maxSpawns == 0)
@@ -38,5 +38,12 @@ public class Jay : EntityAbility
         currentQ.Value = abilityCooldowns.Value;
         qCD.fillAmount = 1;
 
+    }
+
+    [ServerRpc]
+    public void SpawnHealServerRpc()
+    {
+        NetworkObject newHeal = Instantiate(pickup, destination.position, Quaternion.identity);
+        newHeal.SpawnWithOwnership(OwnerClientId);
     }
 }

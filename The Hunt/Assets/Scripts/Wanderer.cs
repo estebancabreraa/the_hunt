@@ -1,3 +1,5 @@
+using MLAPI;
+using MLAPI.Messaging;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +7,12 @@ using UnityEngine.UI;
 
 public class Wanderer : EntityAbility
 {
-    [SerializeField] protected Trap trapp;
+    [SerializeField] protected NetworkObject trapp;
     [SerializeField] protected Transform destination;
     [SerializeField] protected Text amount;
 
     protected int maxTraps = 3;
-    protected Trap newHeal;
+    //protected Trap newHeal;
 
     protected override void Start()
     {
@@ -25,8 +27,8 @@ public class Wanderer : EntityAbility
         StartCoroutine(ResetAbility(1));
 
         if (maxTraps == 0) return;
-        newHeal = Instantiate(trapp);
-        newHeal.gameObject.transform.localPosition = destination.position;
+        SpawnTrapServerRpc();
+        
         maxTraps -= 1;
         amount.text = maxTraps.ToString();
         if (maxTraps == 0)
@@ -36,6 +38,15 @@ public class Wanderer : EntityAbility
             abilityAvailable[0] = false;
         }
 
+    }
+
+    [ServerRpc]
+    public void SpawnTrapServerRpc()
+    {
+        NetworkObject newHeal = Instantiate(trapp, destination.position, Quaternion.identity);
+        //newHeal.gameObject.transform.localPosition = destination.position;
+        newHeal.SpawnWithOwnership(OwnerClientId);
+        
     }
     protected override IEnumerator ResetAbility(int ability)
     {

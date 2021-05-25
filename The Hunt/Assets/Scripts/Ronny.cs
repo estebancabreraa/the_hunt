@@ -1,3 +1,4 @@
+using MLAPI.Messaging;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,16 +14,17 @@ public class Ronny : EntityAbility
         StartCoroutine(ResetAbility(1));
         currentQ.Value = 0;
 
-        AffectSpeed(true);
+        AffectSpeedServerRpc(true);
         StartCoroutine(Deactivate());
     }
     protected IEnumerator Deactivate()
     {
         yield return new WaitForSecondsRealtime(7);
-        AffectSpeed(false);
+        AffectSpeedServerRpc(false);
     }
 
-    protected void AffectSpeed(bool faster)
+    [ServerRpc]
+    protected void AffectSpeedServerRpc(bool faster)
     {
         players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject player in players)

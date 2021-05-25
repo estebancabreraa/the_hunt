@@ -1172,10 +1172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010f4c74e8dae7348b05fa3f0d5b016c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   speed: 5
   speedDifferentiator: 2.5
-  animator: {fileID: 0}
 --- !u!61 &2396289640930010462
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1235,7 +1233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c9a059a918b1746984ecab95de2a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health:
+    m_InternalValue: 3
   healthBar: {fileID: 2396289639801066583}
 --- !u!114 &2396289640930010456
 MonoBehaviour:
@@ -1250,14 +1249,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalSpeed: 5
-  speed: 0
+  speed:
+    m_InternalValue: 0
   speedDiffentiator: 0
   animator: {fileID: 2396289640930010458}
   TimeDisabledSpeed: 0
   cameraT: {fileID: 2396289640219711805}
   canvas: {fileID: 2396289639715314590}
-  villainp: {fileID: 2731901853104523510, guid: 98e1f1b9d5f12694fb7484ce10f22fb8,
-    type: 3}
+  theap: {fileID: 2731901853104523510, guid: 98e1f1b9d5f12694fb7484ce10f22fb8, type: 3}
+  keffp: {fileID: -2532653838636919820, guid: 5cd6cbbf45abea745ac340fa68b887c9, type: 3}
+  jayp: {fileID: 457140016092649029, guid: 482b417667d998f48808de628eda42d3, type: 3}
+  ronnyp: {fileID: 5197720163170559438, guid: 3b6c7df46e941ac4dbee23c84f828935, type: 3}
 --- !u!95 &2396289640930010458
 Animator:
   serializedVersion: 3
@@ -1295,7 +1297,7 @@ MonoBehaviour:
   qCD: {fileID: 2396289639391652775}
   currentQ:
     m_InternalValue: 20
-  trapp: {fileID: 979585079805486309, guid: 8a1477d45b081ad4e9a54ff27c351d48, type: 3}
+  trapp: {fileID: -1942241102055106005, guid: 8a1477d45b081ad4e9a54ff27c351d48, type: 3}
   destination: {fileID: 2396289640996628652}
   amount: {fileID: 2396289639437495429}
 --- !u!114 &2396289640930010455

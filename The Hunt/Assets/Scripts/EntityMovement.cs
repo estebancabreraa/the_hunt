@@ -21,7 +21,11 @@ public class EntityMovement : NetworkBehaviour
     private static readonly int Speed = Animator.StringToHash("Speed");
     public Transform cameraT;
     public GameObject canvas;
-    public NetworkObject villainp;
+    public NetworkObject theap;
+    public NetworkObject keffp;
+    public NetworkObject jayp;
+    public NetworkObject ronnyp;
+
 
 
     // Start is called before the first frame update
@@ -42,10 +46,17 @@ public class EntityMovement : NetworkBehaviour
             rb = GetComponent<Rigidbody2D>();
             
         }
-        if (IsOwner && !IsHost)
+        if (IsOwner && !IsHost && gameObject.name == "villain(Clone)")
         {
+            print(gameObject.name);
             if (GameObject.Find("Thea(Clone)") == null)
                 SpawnCliServerRpc(OwnerClientId, 1);
+            else if (GameObject.Find("Keff(Clone)") == null)
+                SpawnCliServerRpc(OwnerClientId, 2);
+            else if (GameObject.Find("Ronny(Clone)") == null)
+                SpawnCliServerRpc(OwnerClientId, 3);
+            else
+                SpawnCliServerRpc(OwnerClientId, 4);
         }
     }
 
@@ -105,7 +116,25 @@ public class EntityMovement : NetworkBehaviour
     {
         if (character == 1)
         {
-            NetworkObject villaini = Instantiate(villainp, Vector3.zero, Quaternion.identity);
+            NetworkObject villaini = Instantiate(theap, Vector3.zero, Quaternion.identity);
+            villaini.SpawnAsPlayerObject(cid);
+            Destroy(gameObject);
+        }
+        else if (character == 2)
+        {
+            NetworkObject villaini = Instantiate(keffp, Vector3.zero, Quaternion.identity);
+            villaini.SpawnAsPlayerObject(cid);
+            Destroy(gameObject);
+        }
+        else if (character == 3)
+        {
+            NetworkObject villaini = Instantiate(ronnyp, Vector3.zero, Quaternion.identity);
+            villaini.SpawnAsPlayerObject(cid);
+            Destroy(gameObject);
+        }
+        else if (character == 4)
+        {
+            NetworkObject villaini = Instantiate(jayp, Vector3.zero, Quaternion.identity);
             villaini.SpawnAsPlayerObject(cid);
             Destroy(gameObject);
         }

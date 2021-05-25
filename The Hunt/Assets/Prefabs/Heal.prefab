@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8238927683168024063}
   - component: {fileID: 8238927683168024048}
   - component: {fileID: 8238927683168024061}
+  - component: {fileID: -4027385465158450237}
   m_Layer: 0
   m_Name: Heal
   m_TagString: Heal
@@ -123,3 +124,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnable: 0
+--- !u!114 &-4027385465158450237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8238927683168024049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkInstanceId: 0
+  PrefabHash: 16046327114031759023
+  PrefabHashGenerator: Heal
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0

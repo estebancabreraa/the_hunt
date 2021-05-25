@@ -8,9 +8,10 @@ using MLAPI.Connection;
 public class LevelMenu : NetworkBehaviour
 {
     public static int playercount = 0;
+    private Vector3 spawnp = new Vector3(10, 0, 0);
     public void Host()
     {
-        NetworkManager.Singleton.StartHost();
+        NetworkManager.Singleton.StartHost(spawnp);
         gameObject.SetActive(false);
         
     }

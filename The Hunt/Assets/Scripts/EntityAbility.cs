@@ -10,12 +10,12 @@ using System.Xml.Schema;
 
 public class EntityAbility : NetworkBehaviour
 {
-    [SerializeField] protected NetworkVariableFloat abilityCooldowns = new NetworkVariableFloat(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.OwnerOnly }, 15f);
+    [SerializeField] protected NetworkVariableFloat abilityCooldowns = new NetworkVariableFloat(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.Everyone }, 15f);
     [SerializeField] protected bool[] abilityAvailable = {true, true};
     [SerializeField] protected Image qCD;
     //protected float currentQ;
     const float tolerance = 0.01f;
-    [SerializeField] protected NetworkVariableFloat currentQ = new NetworkVariableFloat(20f);
+    [SerializeField] protected NetworkVariableFloat currentQ = new NetworkVariableFloat(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.Everyone } , 20f);
 
 
     protected virtual void Start()

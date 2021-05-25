@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class EntityManager : NetworkBehaviour
 {
-    public NetworkVariableFloat health = new NetworkVariableFloat(3f);
+    public NetworkVariableFloat health = new NetworkVariableFloat(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.Everyone } , 3f);
     public UnityEngine.UI.Image healthBar;
     private const int TotalHealth = 3;
     private PlayerMovement MovementController;
@@ -23,14 +23,20 @@ public class EntityManager : NetworkBehaviour
         if (health.Value == TotalHealth && changer == 1 && modifier == 1) return;
         health.Value += changer * modifier;
         if (health.Value <= 0)
-            MovementController.Kill();
-        else if (IsOwner)
         {
+            MovementController.Kill();
+            print("hola");
+        }
+        else
+        {
+            print("hola2");
             if (modifier > 0)
                 MovementController.SetSpeed(-1, true);
             else
                 MovementController.SetSpeed(-1);
         }
+        print("hola3");
+
     }
 
     private void OnEnable()
