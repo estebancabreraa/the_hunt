@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 1c151957336d897458afffbb61206c82
+guid: 00792b530430c984eba3b5d8f8d2f3e1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4723107735738678597
-    second: Idle_0
+      213: 8091712759725125520
+    second: Keff_idle_0
   - first:
-      213: -7385789195546760866
-    second: Idle_1
+      213: -2023005761767509420
+    second: Keff_idle_1
   - first:
-      213: 3234629978573100161
-    second: Idle_2
+      213: 7535758184932223881
+    second: Keff_idle_2
   - first:
-      213: 6373048116405451881
-    second: Idle_3
+      213: -5671977617104600475
+    second: Keff_idle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -53,7 +53,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: Keff_idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 38.25
-        height: 51
+        width: 21
+        height: 34
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,20 +117,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54d7a982679db8140800000000000000
-      internalID: 4723107735738678597
+      spriteID: 09f69eb12e98b4070800000000000000
+      internalID: 8091712759725125520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: Keff_idle_1
       rect:
         serializedVersion: 2
-        x: 38
+        x: 21
         y: 0
-        width: 38.25
-        height: 51
+        width: 21
+        height: 34
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e596485bbd7608990800000000000000
-      internalID: -7385789195546760866
+      spriteID: 452774f5af6dce3e0800000000000000
+      internalID: -2023005761767509420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_2
+      name: Keff_idle_2
       rect:
         serializedVersion: 2
-        x: 76
+        x: 42
         y: 0
-        width: 38.25
-        height: 51
+        width: 21
+        height: 34
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 184dda4e3d6b3ec20800000000000000
-      internalID: 3234629978573100161
+      spriteID: 98ba02e9424649860800000000000000
+      internalID: 7535758184932223881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_3
+      name: Keff_idle_3
       rect:
         serializedVersion: 2
-        x: 114
+        x: 63
         y: 0
-        width: 38.25
-        height: 51
+        width: 21
+        height: 34
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96cb1dafe7d917850800000000000000
-      internalID: 6373048116405451881
+      spriteID: 562838e98661941b0800000000000000
+      internalID: -5671977617104600475
       vertices: []
       indices: 
       edges: []

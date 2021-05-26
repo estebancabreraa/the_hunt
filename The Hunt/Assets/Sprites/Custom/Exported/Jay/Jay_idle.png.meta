@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 1c151957336d897458afffbb61206c82
+guid: fbfb2a11e6b6a8e429d17e521c7632d4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4723107735738678597
-    second: Idle_0
+      213: 527436957153948363
+    second: Jay_idle_0
   - first:
-      213: -7385789195546760866
-    second: Idle_1
+      213: 2720177451041576268
+    second: Jay_idle_1
   - first:
-      213: 3234629978573100161
-    second: Idle_2
-  - first:
-      213: 6373048116405451881
-    second: Idle_3
+      213: 7581058011107704416
+    second: Jay_idle_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -53,7 +50,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: Jay_idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 38.25
-        height: 51
+        width: 13
+        height: 37
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,20 +114,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54d7a982679db8140800000000000000
-      internalID: 4723107735738678597
+      spriteID: bc2f2983e15d15700800000000000000
+      internalID: 527436957153948363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: Jay_idle_1
       rect:
         serializedVersion: 2
-        x: 38
+        x: 13
         y: 0
-        width: 38.25
-        height: 51
+        width: 13
+        height: 37
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,20 +135,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e596485bbd7608990800000000000000
-      internalID: -7385789195546760866
+      spriteID: c455c57caf200c520800000000000000
+      internalID: 2720177451041576268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_2
+      name: Jay_idle_2
       rect:
         serializedVersion: 2
-        x: 76
+        x: 26
         y: 0
-        width: 38.25
-        height: 51
+        width: 13
+        height: 37
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,29 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 184dda4e3d6b3ec20800000000000000
-      internalID: 3234629978573100161
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_3
-      rect:
-        serializedVersion: 2
-        x: 114
-        y: 0
-        width: 38.25
-        height: 51
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96cb1dafe7d917850800000000000000
-      internalID: 6373048116405451881
+      spriteID: 06e34bd4814553960800000000000000
+      internalID: 7581058011107704416
       vertices: []
       indices: 
       edges: []
