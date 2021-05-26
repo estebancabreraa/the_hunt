@@ -7,10 +7,6 @@ using UnityEngine;
 
 public class Villain : NetworkBehaviour
 {
-    protected Vector2 Movement;
-
-    [SerializeField] protected float speed = 5f;
-    [SerializeField] protected float speedDifferentiator = 2.5f;
     private List<PlayerManager> playerList;
     private PlayerManager current;
     protected void Start()

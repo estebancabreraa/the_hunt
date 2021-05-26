@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.268833, y: 0.67122805, z: -9.344975}
+  m_LocalPosition: {x: 0, y: 0, z: -9.344975}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4812999784907794151}
@@ -61,7 +61,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -717,7 +717,7 @@ Transform:
   m_GameObject: {fileID: 4812999784907794152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4812999784933462503}
   - {fileID: 4812999785349165635}
@@ -771,11 +771,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df22071d636b1e43b1db88c2e7e37fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSpeed: 5
+  rb: {fileID: 0}
+  normalSpeed: 8
   speed:
     m_InternalValue: 0
   speedDiffentiator: 0
   animator: {fileID: 4812999784933462502}
+  destAnim: {fileID: 0}
   TimeDisabledSpeed: 0
   cameraT: {fileID: 519420032}
   canvas: {fileID: 643422614885228098}
@@ -1043,8 +1045,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4812999785314447118}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.83, y: 0, z: 0}
-  m_LocalScale: {x: 0.070000015, y: 0.10000003, z: 1}
+  m_LocalPosition: {x: 1.4, y: 0, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.07, z: 1}
   m_Children: []
   m_Father: {fileID: 4812999785349165635}
   m_RootOrder: 0

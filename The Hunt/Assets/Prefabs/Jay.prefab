@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376650191489042308}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.268833, y: 0.67122805, z: -9.344975}
+  m_LocalPosition: {x: 0, y: 0, z: -9.344975}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1376650191977658226}
@@ -60,7 +60,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -106,6 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1376650191869200012}
+  - component: {fileID: 669030679083950243}
   m_Layer: 0
   m_Name: dest
   m_TagString: Untagged
@@ -127,6 +128,25 @@ Transform:
   m_Father: {fileID: 1376650191977658226}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &669030679083950243
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376650191869200011}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 466ddea2bfd2dd3478130a04a0deed4e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1376650191977658237
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +180,7 @@ Transform:
   m_GameObject: {fileID: 1376650191977658237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 1376650191489042296}
   - {fileID: 1376650192086188146}
@@ -196,11 +216,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df22071d636b1e43b1db88c2e7e37fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   normalSpeed: 5
   speed:
     m_InternalValue: 0
   speedDiffentiator: 0
   animator: {fileID: 1376650192086188147}
+  destAnim: {fileID: 669030679083950243}
   TimeDisabledSpeed: 0
   cameraT: {fileID: 1376650191489042296}
   canvas: {fileID: 6381414132010083576}

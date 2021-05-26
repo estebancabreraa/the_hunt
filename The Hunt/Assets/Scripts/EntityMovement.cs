@@ -9,16 +9,19 @@ using MLAPI.NetworkVariable;
 public class EntityMovement : NetworkBehaviour
 {
     protected Vector2 movement;
-    protected Rigidbody2D rb;
+    [SerializeField] protected Rigidbody2D rb;
     [SerializeField] public float normalSpeed = 5f;
     public NetworkVariableFloat speed;
     [SerializeField] protected float speedDiffentiator;
     [SerializeField] protected Animator animator;
+    [SerializeField] protected Animator destAnim;
     [SerializeField] protected int TimeDisabledSpeed;
     protected Coroutine SpeedChanger;
     private static readonly int Horizontal = Animator.StringToHash("Horizontal");
     private static readonly int Vertical = Animator.StringToHash("Vertical");
     private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int Turn = Animator.StringToHash("Turn");
+
     public Transform cameraT;
     public GameObject canvas;
     public NetworkObject theap;
@@ -63,12 +66,16 @@ public class EntityMovement : NetworkBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (!IsLocalPlayer) return;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        //animator.SetFloat(Horizontal, movement.x);
-        //animator.SetFloat(Vertical, movement.x);
-        //animator.SetFloat(Speed, movement.sqrMagnitude);
+        animator.SetFloat(Horizontal, movement.x);
+        animator.SetFloat(Vertical, movement.y);
+        animator.SetFloat(Speed, movement.sqrMagnitude);
+        if(destAnim != null)
+            destAnim.SetFloat(Turn, movement.x);
+
     }
 
     protected virtual void FixedUpdate()
@@ -116,25 +123,25 @@ public class EntityMovement : NetworkBehaviour
     {
         if (character == 1)
         {
-            NetworkObject villaini = Instantiate(theap, new Vector3(-50, 30, 0), Quaternion.identity);
+            NetworkObject villaini = Instantiate(theap, new Vector3(-40, 20, 0), Quaternion.identity);
             villaini.SpawnAsPlayerObject(cid);
             Destroy(gameObject);
         }
         else if (character == 2)
         {
-            NetworkObject villaini = Instantiate(keffp, new Vector3(-53, 30, 0), Quaternion.identity);
+            NetworkObject villaini = Instantiate(keffp, new Vector3(-43, 20, 0), Quaternion.identity);
             villaini.SpawnAsPlayerObject(cid);
             Destroy(gameObject);
         }
         else if (character == 3)
         {
-            NetworkObject villaini = Instantiate(ronnyp, new Vector3(-50, 33, 0), Quaternion.identity);
+            NetworkObject villaini = Instantiate(ronnyp, new Vector3(-40, 23, 0), Quaternion.identity);
             villaini.SpawnAsPlayerObject(cid);
             Destroy(gameObject);
         }
         else if (character == 4)
         {
-            NetworkObject villaini = Instantiate(jayp, new Vector3(-53, 33, 0), Quaternion.identity);
+            NetworkObject villaini = Instantiate(jayp, new Vector3(-43, 23, 0), Quaternion.identity);
             villaini.SpawnAsPlayerObject(cid);
             Destroy(gameObject);
         }
