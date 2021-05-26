@@ -116,25 +116,25 @@ public class EntityMovement : NetworkBehaviour
     {
         if (character == 1)
         {
-            NetworkObject villaini = Instantiate(theap, Vector3.zero, Quaternion.identity);
+            NetworkObject villaini = Instantiate(theap, new Vector3(-50, 30, 0), Quaternion.identity);
             villaini.SpawnAsPlayerObject(cid);
             Destroy(gameObject);
         }
         else if (character == 2)
         {
-            NetworkObject villaini = Instantiate(keffp, Vector3.zero, Quaternion.identity);
+            NetworkObject villaini = Instantiate(keffp, new Vector3(-53, 30, 0), Quaternion.identity);
             villaini.SpawnAsPlayerObject(cid);
             Destroy(gameObject);
         }
         else if (character == 3)
         {
-            NetworkObject villaini = Instantiate(ronnyp, Vector3.zero, Quaternion.identity);
+            NetworkObject villaini = Instantiate(ronnyp, new Vector3(-50, 33, 0), Quaternion.identity);
             villaini.SpawnAsPlayerObject(cid);
             Destroy(gameObject);
         }
         else if (character == 4)
         {
-            NetworkObject villaini = Instantiate(jayp, Vector3.zero, Quaternion.identity);
+            NetworkObject villaini = Instantiate(jayp, new Vector3(-53, 33, 0), Quaternion.identity);
             villaini.SpawnAsPlayerObject(cid);
             Destroy(gameObject);
         }

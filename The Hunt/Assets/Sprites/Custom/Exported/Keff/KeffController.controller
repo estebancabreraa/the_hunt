@@ -67,9 +67,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -7099450597249539060}
     m_Position: {x: 30, y: 260, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -1034418394369050378}
-    m_Position: {x: 65, y: 325, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -89,7 +86,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: b9eb8e477c1ea994e9dd3e6dbccae33b, type: 2}
+    m_Motion: {fileID: 7400000, guid: 4b14688f64997a94792bbfbbf00b4d35, type: 2}
     m_Threshold: -1
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -97,7 +94,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 173932e47ef4af04e9cff9ec90703b3d, type: 2}
+    m_Motion: {fileID: 7400000, guid: 4b14688f64997a94792bbfbbf00b4d35, type: 2}
     m_Threshold: 1
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -143,7 +140,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: crewm
+  m_Name: KeffController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Horizontal
@@ -198,7 +195,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a8728e683072e8a4a83ef7cefa295bfd, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4b14688f64997a94792bbfbbf00b4d35, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
